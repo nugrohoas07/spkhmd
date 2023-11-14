@@ -35,7 +35,7 @@ class Migration_create_table_users extends CI_Migration {
       ),
       'role' => array(
         'type' => 'VARCHAR',
-        'constraint' => '2',
+        'constraint' => '11',
       ),
     ));
     $this->dbforge->add_key('id', TRUE);
