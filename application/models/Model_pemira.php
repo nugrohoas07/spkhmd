@@ -280,7 +280,7 @@ class Model_pemira extends CI_Model
     {
         $this->db->select('usr.nama, komen.komentar, komen.anonim');
         $this->db->from('komentar as komen');
-        $this->db->join('user as usr', 'komen.id_user = usr.username');
+        $this->db->join('users as usr', 'komen.id_user = usr.username');
         $this->db->where('komen.id_calon', $nim);
         return $this->db->get()->result();
     }
