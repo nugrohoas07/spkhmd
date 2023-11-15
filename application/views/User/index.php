@@ -93,7 +93,7 @@
             <?php } ?>
           </div>
         </div>
-      <?php } ?>
+      <?php } ?> <!-- end info pemira -->
     </div>
   </section>
 </div>
