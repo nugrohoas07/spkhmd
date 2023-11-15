@@ -8,7 +8,7 @@ function cek_session(){
 	$role = $CI->session->userdata('role');
 	if($session!="1"){
 		redirect('login');
-	} elseif (($menu == 'admin' && $role != 'Admin') || ($menu == 'user' && $role != 'User')) {
+	} elseif (($menu == 'admin' && $role != 'admin') || ($menu == 'user' && $role != 'user')) {
 		redirect('authentications');
 	}
 }

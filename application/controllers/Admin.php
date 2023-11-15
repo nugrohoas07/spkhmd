@@ -9,6 +9,7 @@ class Admin extends CI_Controller
     parent::__construct();
     $this->load->model(array('model_user', 'model_pemira'));
     $this->load->library('form_validation');
+    cek_session();
   }
 
   function index()

@@ -8,8 +8,8 @@ class Login extends CI_Controller
     {
         parent::__construct();
         $this->load->model("model_user");
-        /* $this->load->library('form_validation');
-        cek_session_login(); */
+        //$this->load->library('form_validation');
+        cek_session_login();
     }
 
     function index()
