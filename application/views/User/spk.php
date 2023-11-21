@@ -143,7 +143,7 @@
             }
         });
 
-        console.log(dataArray);
+        console.log(`data = ${JSON.stringify(dataArray)}`);
     }
 
     function changeTab(tabId) {

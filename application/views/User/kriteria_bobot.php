@@ -35,7 +35,6 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label>List Kriteria</label>
                                                 <select class="duallistbox" multiple="multiple" id="selected-options">
                                                     <?php foreach ($kriteria as $krit) : ?>
                                                         <option value="<?= $krit->id ?>"><?= $krit->kriteria ?></option>
@@ -63,7 +62,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-12 d-flex justify-content-center">
-                                                <button class="btn btn-primary mr-2" onclick="changeTab('custom-tabs-one-home')">Previous</button>
+                                                <button type="button" class="btn btn-primary mr-2" onclick="changeTab('custom-tabs-one-home')">Previous</button>
                                                 <button type="submit" class="btn btn-primary">Next</button>
                                             </div>
                                         </div>
@@ -89,7 +88,11 @@
             kriteria[<?= $data->id; ?>] = '<?= $data->kriteria; ?>';
         <?php } ?>
 
-        $('.duallistbox').bootstrapDualListbox()
+        $('.duallistbox').bootstrapDualListbox({
+            nonSelectedListLabel: 'Daftar Kriteria',
+            selectedListLabel: 'Kriteria Dipilih',
+            showFilterInputs: false
+        })
 
         $('.range_5').ionRangeSlider({
             min: 0,

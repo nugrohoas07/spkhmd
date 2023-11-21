@@ -135,16 +135,22 @@ class Model_pemira extends CI_Model
                     $this->db->where('id_user', $id_user);
                     $this->db->where('id_calon', $id_calon);
                     $this->db->where('id_kriteria', $id);
-                    $this->db->update('nilai_calon', $data);
+                    $result = $this->db->update('nilai_calon', $data);
                 } else { // jika nilai tidak ada di db insert
-                    $this->db->insert('nilai_calon', $data);
+                    $result = $this->db->insert('nilai_calon', $data);
+                }
+                if (!$result) {
+                    return false;
                 }
             } else { // jika kriteria memiliki nilai 0, hapus data dari DB
                 if ($this->cekNilai($id_user, $id_calon, $id)) {
                     $this->db->where('id_user', $id_user);
                     $this->db->where('id_calon', $id_calon);
                     $this->db->where('id_kriteria', $id);
-                    $this->db->delete('nilai_calon');
+                    $result = $this->db->delete('nilai_calon');
+                    if (!$result) {
+                        return false;
+                    }
                 }
             }
         }
@@ -158,17 +164,25 @@ class Model_pemira extends CI_Model
             if ($this->cekReview($id_user, $id_calon)) { // jika komentar sudah ada di DB, update
                 $this->db->where('id_user', $id_user);
                 $this->db->where('id_calon', $id_calon);
-                $this->db->update('komentar', $komen);
+                $result = $this->db->update('komentar', $komen);
             } else { // jika komentar belum ada di DB, insert
-                return $this->db->insert('komentar', $komen);
+                $result = $this->db->insert('komentar', $komen);
+            }
+
+            if (!$result) {
+                return false;
             }
         } else { // jika komentar tidak ada
             if ($this->cekReview($id_user, $id_calon)) { // jika komentar ada sebelumnya di DB, hapus
                 $this->db->where('id_user', $id_user);
                 $this->db->where('id_calon', $id_calon);
-                $this->db->delete('komentar');
+                $result = $this->db->delete('komentar');
+                if (!$result) {
+                    return false;
+                }
             }
         }
+        return true;
     }
 
     function cekNilai($user_id, $calon_id, $id_kriteria)
@@ -223,9 +237,12 @@ class Model_pemira extends CI_Model
             if ($this->cekBobot($user_id, $id)) {
                 $this->db->where('id_user', $user_id);
                 $this->db->where('id_kriteria', $id);
-                $this->db->update('bobot', $data);
+                $result = $this->db->update('bobot', $data);
             } else {
-                $this->db->insert('bobot', $data);
+                $result = $this->db->insert('bobot', $data);
+            }
+            if (!$result) {
+                return false;
             }
         }
 
@@ -234,9 +251,13 @@ class Model_pemira extends CI_Model
             foreach ($kriteria_to_delete as $id_to_delete) {
                 $this->db->where('id_user', $user_id);
                 $this->db->where('id_kriteria', $id_to_delete);
-                $this->db->delete('bobot');
+                $result = $this->db->delete('bobot');
+            }
+            if (!$result) {
+                return false;
             }
         }
+        return true;
     }
 
     function getBobotByUser($id_kriteria)

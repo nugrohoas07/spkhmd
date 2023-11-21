@@ -27,7 +27,7 @@ class Login extends CI_Controller
                 $role = $this->model_user->getRole($user->role)->role;
 
                 $data_session = array(
-                    'sistem_login' => "1",
+                    'spkhmd_login' => "1",
                     'username' => $user->username,
                     'nama' => $user->nama,
                     'roleId' => $user->role,

@@ -22,7 +22,7 @@ class Authentications extends CI_Controller
 
   public function logout()
   {
-    $out = array('sistem_login', 'username', 'nama', 'roleId', 'role');
+    $out = array('spkhmd_login', 'username', 'nama', 'roleId', 'role');
     $this->session->unset_userdata($out);
     $this->toastr->success('Berhasil Keluar');
     redirect('login');

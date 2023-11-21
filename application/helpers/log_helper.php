@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 function cek_session(){
 	$CI = & get_instance();
-	$session = $CI->session->userdata('sistem_login');
+	$session = $CI->session->userdata('spkhmd_login');
 	$menu = strtolower($CI->uri->segment(1));
 	$role = $CI->session->userdata('role');
 	if($session!="1"){
@@ -15,7 +15,7 @@ function cek_session(){
 
 function cek_session_login(){
 	$CI = & get_instance();
-	$session = $CI->session->userdata('sistem_login');
+	$session = $CI->session->userdata('spkhmd_login');
 	if($session=="1"){
 		redirect('authentications');
 	}

@@ -44,8 +44,9 @@ class User extends CI_Controller
     public function input_ulasan()
     {
         if (isset($_POST['simpan'])) {
-            $this->model_pemira->inputReviewCalon();
-            if ($this->toastr->success('Berhasil Review')) {
+            $result = $this->model_pemira->inputReviewCalon();
+            if ($result) {
+                $this->toastr->success('Berhasil Review');
             } else {
                 $this->toastr->error('Gagal Review');
             }
@@ -63,8 +64,8 @@ class User extends CI_Controller
     public function input_bobot()
     {
         if (isset($_POST['simpan'])) {
-            $this->model_pemira->inputBobot();
-            if ($this->toastr->success('Berhasil Bobot')) {
+            if ($this->model_pemira->inputBobot()) {
+                $this->toastr->success('Berhasil Bobot');
             } else {
                 $this->toastr->error('Gagal Bobot');
             }

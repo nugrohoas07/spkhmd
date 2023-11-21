@@ -15,23 +15,6 @@
 
   <div class="content-body">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-3 col-6">
-          <div class="small-box bg-danger">
-            <div class="inner">
-              <h3><?php
-                  echo ('666');
-                  ?>
-              </h3>
-              <p>Persetujuan Baru</p>
-            </div>
-            <div class="icon">
-              <i class="fas fa-balance-scale"></i>
-            </div>
-            <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-      </div> <!-- end row small info box -->
       <?php if (!empty($pemira)) {
         $lisan = explode(" ", $pemira->kamp_lisan);
         $debat = explode(" ", $pemira->debat);
