@@ -89,6 +89,7 @@
         <?php } ?>
 
         $('.duallistbox').bootstrapDualListbox({
+            infoText: false,
             nonSelectedListLabel: 'Daftar Kriteria',
             selectedListLabel: 'Kriteria Dipilih',
             showFilterInputs: false

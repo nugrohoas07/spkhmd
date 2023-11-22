@@ -311,4 +311,85 @@ class Model_pemira extends CI_Model
         $this->db->where('id_calon', $nim);
         return $this->db->get('komentar')->num_rows();
     }
+
+    function inputNilaiCalon()
+    {
+        $id_user = $this->session->userdata("username");
+        $nilai = $this->input->post('nilai');
+        foreach ($nilai as $id_calon => $kriteria) {
+            foreach ($kriteria as $id_kriteria => $nilai_kriteria) {
+                $data = array(
+                    'id_user' => $id_user,
+                    'id_calon' => $id_calon,
+                    'id_kriteria' => $id_kriteria,
+                    'nilai' => $nilai_kriteria
+                );
+                if ($this->cekNilai($id_user, $id_calon, $id_kriteria)) { // cek apakah data nilai ada di DB, update jika ada
+                    $this->db->where('id_user', $id_user);
+                    $this->db->where('id_calon', $id_calon);
+                    $this->db->where('id_kriteria', $id_kriteria);
+                    $result = $this->db->update('nilai_calon', $data);
+                } else { // jika nilai tidak ada di db insert
+                    $result = $this->db->insert('nilai_calon', $data);
+                }
+                if (!$result) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    function getMaxNilaidanBobot($id_user)
+    {
+        $this->db->select('nc.id_kriteria, MAX(nilai) AS nilai_max, bb.bobot');
+        $this->db->from('nilai_calon nc');
+        $this->db->join('bobot bb', 'nc.id_kriteria = bb.id_kriteria');
+        $this->db->where('nc.id_user', $id_user);
+        $this->db->where('bb.id_user', $id_user);
+        $this->db->group_by('nc.id_kriteria, bb.bobot');
+        $this->db->order_by('nc.id_kriteria', 'ASC');
+        return $this->db->get()->result();
+    }
+
+    function getNilaiCalonByUser($id_user)
+    {
+        $this->db->select('nilai_calon.id_calon, bobot.id_kriteria, bobot.bobot, nilai_calon.nilai');
+        $this->db->from('bobot');
+        $this->db->join('nilai_calon', 'bobot.id_kriteria = nilai_calon.id_kriteria AND bobot.id_user = nilai_calon.id_user');
+        $this->db->where('bobot.id_user', $id_user);
+        return $this->db->get()->result();
+    }
+
+    function rankingCalon()
+    {
+        $id_user = $this->session->userdata("username");
+        $max_bobot = $this->getMaxNilaidanBobot($id_user);
+        foreach ($max_bobot as $row) {
+            $nilai_max[$row->id_kriteria] = $row->nilai_max; //nilai max tiap kriteria
+            $bobot[$row->id_kriteria] = $row->bobot/100; // bobot tiap kriteria
+        }
+        $data_nilai = $this->getNilaiCalonByUser($id_user);
+        foreach ($data_nilai as $nilai) {
+            $nilai_normalisasi = $nilai->nilai / $nilai_max[$nilai->id_kriteria];
+            if (!isset($preferensi[$nilai->id_calon])) {
+                $preferensi[$nilai->id_calon] = 0;
+            }
+            $preferensi[$nilai->id_calon] += $nilai_normalisasi * $bobot[$nilai->id_kriteria];
+        }
+        foreach ($preferensi as $id_calon => $nilai_preferensi) {
+            // Cek apakah data sudah ada di dalam tabel preferensi
+            $existing_data = $this->db->get_where('skor_calon', ['id_user' => $id_user,'id_calon' => $id_calon]);
+        
+            if ($existing_data->num_rows() > 0) {
+                // Jika sudah ada, lakukan UPDATE
+                $this->db->where('id_user', $id_user);
+                $this->db->where('id_calon', $id_calon);
+                $this->db->update('skor_calon', ['skor' => $nilai_preferensi]);
+            } else {
+                // Jika belum ada, lakukan INSERT
+                $this->db->insert('skor_calon', ['id_user' => $id_user, 'id_calon' => $id_calon, 'skor' => $nilai_preferensi]);
+            }
+        }
+    }
 }

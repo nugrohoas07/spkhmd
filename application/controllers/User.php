@@ -65,19 +65,34 @@ class User extends CI_Controller
     {
         if (isset($_POST['simpan'])) {
             if ($this->model_pemira->inputBobot()) {
-                $this->toastr->success('Berhasil Bobot');
+                $this->toastr->success('Pembobotan Berhasil');
             } else {
-                $this->toastr->error('Gagal Bobot');
+                $this->toastr->error('Pembobotan Gagal');
+                redirect('User/kriteria_bobot');
             }
-            redirect('User/spk');
+            redirect('User/penilaian');
         }
     }
 
-    function spk()
+    function penilaian()
     {
         $data["calon"] = $this->model_pemira->getCalonThisYear();
         $data["myKriteria"] = $this->model_pemira->getMyKriteria();
-        $this->load->view('User/spk', $data);
+        $this->load->view('User/nilai_atribut', $data);
+    }
+
+    function input_nilai()
+    {
+        if (isset($_POST['simpan'])) {
+            $result = $this->model_pemira->inputNilaiCalon();
+            if ($result) {
+                $this->model_pemira->rankingCalon();
+                $this->toastr->success('Penilaian Berhasil');
+            } else {
+                $this->toastr->error('Penilaian Gagal');
+            }
+            redirect('User/profil_calon');
+        }
     }
 
     public function get_bobot_usr($id_kriteria)
