@@ -48,6 +48,7 @@
                                         <?php endforeach; ?>
                                         <div class="mt-4 col-12 d-flex justify-content-center">
                                             <input type="hidden" name="simpan">
+                                            <a href="<?= site_url('User/kriteria_bobot') ?>" class="btn btn-primary mr-2">Previous</a>
                                             <button type="submit" class="btn btn-primary" id="next-button">Next</button>
                                         </div>
                                     </form>

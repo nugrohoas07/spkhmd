@@ -283,6 +283,7 @@ class Model_pemira extends CI_Model
         $this->db->from('bobot as bb');
         $this->db->join('kriteria as kr', 'bb.id_kriteria = kr.id');
         $this->db->where('bb.id_user', $user_id);
+        $this->db->order_by('bb.id_kriteria', 'ASC');
         return $this->db->get()->result();
     }
 
@@ -354,7 +355,7 @@ class Model_pemira extends CI_Model
 
     function getNilaiCalonByUser($id_user)
     {
-        $this->db->select('nilai_calon.id_calon, bobot.id_kriteria, bobot.bobot, nilai_calon.nilai');
+        $this->db->select('nilai_calon.id_calon, bobot.id_kriteria, nilai_calon.nilai');
         $this->db->from('bobot');
         $this->db->join('nilai_calon', 'bobot.id_kriteria = nilai_calon.id_kriteria AND bobot.id_user = nilai_calon.id_user');
         $this->db->where('bobot.id_user', $id_user);
@@ -367,7 +368,7 @@ class Model_pemira extends CI_Model
         $max_bobot = $this->getMaxNilaidanBobot($id_user);
         foreach ($max_bobot as $row) {
             $nilai_max[$row->id_kriteria] = $row->nilai_max; //nilai max tiap kriteria
-            $bobot[$row->id_kriteria] = $row->bobot/100; // bobot tiap kriteria
+            $bobot[$row->id_kriteria] = $row->bobot / 100; // bobot tiap kriteria
         }
         $data_nilai = $this->getNilaiCalonByUser($id_user);
         foreach ($data_nilai as $nilai) {
@@ -378,18 +379,29 @@ class Model_pemira extends CI_Model
             $preferensi[$nilai->id_calon] += $nilai_normalisasi * $bobot[$nilai->id_kriteria];
         }
         foreach ($preferensi as $id_calon => $nilai_preferensi) {
-            // Cek apakah data sudah ada di dalam tabel preferensi
-            $existing_data = $this->db->get_where('skor_calon', ['id_user' => $id_user,'id_calon' => $id_calon]);
-        
+            // Cek apakah data sudah ada
+            $existing_data = $this->db->get_where('skor_calon', ['id_user' => $id_user, 'id_calon' => $id_calon]);
+
             if ($existing_data->num_rows() > 0) {
-                // Jika sudah ada, lakukan UPDATE
+                // Jika sudah ada UPDATE
                 $this->db->where('id_user', $id_user);
                 $this->db->where('id_calon', $id_calon);
                 $this->db->update('skor_calon', ['skor' => $nilai_preferensi]);
             } else {
-                // Jika belum ada, lakukan INSERT
+                // Jika belum INSERT
                 $this->db->insert('skor_calon', ['id_user' => $id_user, 'id_calon' => $id_calon, 'skor' => $nilai_preferensi]);
             }
         }
+    }
+
+    function getRekomendasiCalon()
+    {
+        $id_user = $this->session->userdata("username");
+        $this->db->select('sc.id_calon, ck.foto, ck.nama, sc.skor');
+        $this->db->from('skor_calon sc');
+        $this->db->join('calon_ketua ck', 'sc.id_calon = ck.nim');
+        $this->db->where('sc.id_user', $id_user);
+        $this->db->order_by('sc.skor', 'DESC');
+        return $this->db->get()->result();
     }
 }

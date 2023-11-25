@@ -30,27 +30,18 @@ $img = 'https://api.um.ac.id/akademik/operasional/GetFoto.ptikUM?nim=' . $nim . 
             <p>Dashboard</p>
           </a>
         </li>
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-school"></i>
-            <p>PEMIRA<i class="right fas fa-angle-left"></i></p>
+        <li class="nav-item">
+          <a href="<?php echo site_url('Admin/detail_pemira') ?>" class="nav-link">
+            <i class="fas fa-newspaper nav-icon"></i>
+            <p>Info PEMIRA</p>
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?php echo site_url('Admin/detail_pemira') ?>" class="nav-link">
-                <i class="fas fa-newspaper nav-icon"></i>
-                <p>Informasi</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo site_url('Admin/profil_calon') ?>" class="nav-link">
-                <i class="fa fa-users nav-icon"></i>
-                <p>Profil Calon</p>
-              </a>
-            </li>
-          </ul>
         </li>
-
+        <li class="nav-item">
+          <a href="<?php echo site_url('Admin/profil_calon') ?>" class="nav-link">
+            <i class="fa fa-users nav-icon"></i>
+            <p>Profil Calon</p>
+          </a>
+        </li>
         <li class="nav-item " title="Download Buku Panduan">
           <a href="#" class="nav-link ">
             <i class="nav-icon fas fa-book"></i>

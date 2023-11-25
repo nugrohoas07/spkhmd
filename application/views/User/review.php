@@ -32,9 +32,9 @@ $anonim = !empty($komentar->anonim) ? $komentar->anonim : "";
                         <form role="form" action="<?php echo site_url('user/input_ulasan') ?>" class="form-submit" method="post">
                             <div class="card-body">
                                 <h5>Calon : <?= $calon->nama ?></h5>
-                                <div class="alert alert-info">
-                                    <h5><i class="icon fas fa-info"></i>Info</h5>
-                                    Info alert preview. This alert is dismissable.
+                                <div class="callout callout-info">
+                                    <p>Nilai calon berdasarkan aspek yang kamu ketahui</p>
+                                    <p>1 = Sangat Buruk, 2 = Buruk, 3= Cukup Baik, 4 = Baik , 5 = Sangat Baik</p>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">

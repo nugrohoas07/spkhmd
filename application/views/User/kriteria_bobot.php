@@ -35,6 +35,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
+                                                <i class="fa fa-info-circle"> Pilih kriteria calon ketua pilihan anda, minimal 3</i>
+                                                <hr/>
                                                 <select class="duallistbox" multiple="multiple" id="selected-options">
                                                     <?php foreach ($kriteria as $krit) : ?>
                                                         <option value="<?= $krit->id ?>"><?= $krit->kriteria ?></option>
@@ -50,6 +52,8 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+                                    <i class="fa fa-info-circle"> Masukkan bobot tiap kriteria, Total 100%</i>
+                                    <hr/>
                                     <form role="form" action="<?= site_url('user/input_bobot') ?>" class="form-submit" method="post">
                                         <div class="row">
                                             <div class="col-12">
@@ -83,7 +87,6 @@
 <script>
     $(document).ready(function() {
         var kriteria = {};
-        var isUpdatingFields = false; // Flag to prevent multiple updates
         <?php foreach ($kriteria as $data) { ?>
             kriteria[<?= $data->id; ?>] = '<?= $data->kriteria; ?>';
         <?php } ?>
@@ -106,7 +109,7 @@
             skin: 'round'
         })
 
-        $('.duallistbox').change(function() {
+        /* $('.duallistbox').change(function() {
             var selectedValues = $('.duallistbox').val()
 
             $('#dynamic-form').empty();
@@ -119,7 +122,7 @@
                     dataType: 'json',
                     success: function(data) {
                         var labelText = kriteria[value] + " (%)";
-                        var placeholderText = 'Nilai ' + kriteria[value];
+                        var placeholderText = 'Bobot ' + kriteria[value];
 
                         var formGroup = $('<div>').addClass('form-group');
 
@@ -148,6 +151,67 @@
                     }
                 })
             })
+        }); */
+
+        var selectedValues = [];
+
+        $('.duallistbox').change(function() {
+            var newValues = $('.duallistbox').val();
+
+            // Compare the new values with the previous ones
+            var addedValues = newValues.filter(value => !selectedValues.includes(value));
+            var removedValues = selectedValues.filter(value => !newValues.includes(value));
+
+            // Update the selected values
+            selectedValues = newValues;
+
+            // Process added values
+            addedValues.forEach(function(value) {
+                $.ajax({
+                    url: '<?= base_url("user/get_bobot_usr/") ?>' + value,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        var labelText = kriteria[value] + " (%)";
+                        var placeholderText = 'Bobot ' + kriteria[value];
+
+                        var formGroup = $('<div>').addClass('form-group');
+
+                        var labelElement = $('<label>').text(labelText);
+
+                        var inputHidden = $('<input>').attr('type', 'hidden').attr('name', 'id_kriteria[]').val(value)
+
+                        var inputElement = $('<input>')
+                            .attr('type', 'number')
+                            .addClass('form-control')
+                            .attr('name', 'bobot[]')
+                            .attr('placeholder', placeholderText)
+                            .attr('min', '0')
+                            .attr('max', '100')
+                            .attr('data-validation', 'required number totalSum100')
+                            .attr('data-validation-allowing', 'range[1;100]');
+
+                        inputElement.val(data.bobot_value);
+
+                        formGroup.append(labelElement);
+                        formGroup.append(inputHidden);
+                        formGroup.append(inputElement);
+
+                        $('#dynamic-form').append(formGroup);
+                    },
+                    error: function() {
+                        console.log('Fetching data error')
+                    }
+                });
+            });
+
+            // Process removed values
+            removedValues.forEach(function(value) {
+                // Remove corresponding form elements based on value
+                // This is to handle the case where a value is quickly unselected
+                // before its corresponding AJAX request is complete
+                $('#dynamic-form').find('[name="id_kriteria[]"][value="' + value + '"]').closest('.form-group').remove();
+            });
         });
 
         $('#selected-options').on('change', function() {
@@ -155,7 +219,7 @@
             var nextButton = document.getElementById('next-button');
 
             // Mengaktifkan atau menonaktifkan tombol berdasarkan apakah ada opsi yang dipilih
-            if (selectedOptions && selectedOptions.length > 1) {
+            if (selectedOptions && selectedOptions.length > 2) {
                 nextButton.removeAttribute('disabled');
             } else {
                 nextButton.setAttribute('disabled', 'disabled');

@@ -89,7 +89,12 @@
             <?php } ?>
           </div>
         </div>
-      <?php } ?> <!-- end info pemira -->
+      <?php } else { ?> <!-- end info pemira -->
+        <div class="alert alert-danger">
+          <h5><i class="icon fas fa-ban"></i> INFO PEMIRA BELUM ADA</h5>
+          Informasi Jadwal PEMIRA belum diisi
+        </div>
+      <?php } ?>
     </div>
   </div>
   </section>

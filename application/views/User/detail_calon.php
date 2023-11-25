@@ -119,7 +119,7 @@
         var nilaiToLabelMapping = {
             1: 'Sangat Buruk',
             2: 'Buruk',
-            3: 'Sedang',
+            3: 'Cukup Baik',
             4: 'Baik',
             5: 'Sangat Baik'
         };

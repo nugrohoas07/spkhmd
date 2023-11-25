@@ -91,7 +91,7 @@ class User extends CI_Controller
             } else {
                 $this->toastr->error('Penilaian Gagal');
             }
-            redirect('User/profil_calon');
+            redirect('User/rekomendasi_calon');
         }
     }
 
@@ -125,5 +125,11 @@ class User extends CI_Controller
             $this->output->set_content_type('application/json');
             $this->output->set_output(json_encode(''));
         }
+    }
+
+    function rekomendasi_calon()
+    {
+        $data["calon"] = $this->model_pemira->getRekomendasiCalon();
+        $this->load->view('User/ranking_calon', $data);
     }
 }
