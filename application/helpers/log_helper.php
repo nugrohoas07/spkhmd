@@ -5,10 +5,10 @@ function cek_session(){
 	$CI = & get_instance();
 	$session = $CI->session->userdata('spkhmd_login');
 	$menu = strtolower($CI->uri->segment(1));
-	$role = $CI->session->userdata('role');
+	$roleId = $CI->session->userdata('roleId');
 	if($session!="1"){
 		redirect('login');
-	} elseif (($menu == 'admin' && $role != 'admin') || ($menu == 'user' && $role != 'user')) {
+	} elseif (($menu == 'admin' && $roleId != '1') || ($menu == 'user' && $roleId != '2')) {
 		redirect('authentications');
 	}
 }

@@ -36,7 +36,7 @@ class Login extends CI_Controller
                 $this->session->set_userdata($data_session);
                 redirect('authentications');
             } else {
-                $this->toastr->error('Username atau password salah');
+                $this->toastr->error('NIM atau password salah');
                 redirect('login');
             }
         }

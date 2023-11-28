@@ -86,19 +86,23 @@
                                     <hr>
                                     <div>
                                         <h5>Komentar</h5>
-                                        <?php foreach ($komentar as $komen) : ?>
-                                            <div>
-                                                <?php
-                                                if ($komen->anonim) {
-                                                    echo substr($komen->nama, 0, 1) . str_repeat('*', 5);
-                                                } else {
-                                                    echo $komen->nama;
-                                                }
-                                                ?>
-                                            </div>
-                                            <div><?= $komen->komentar ?></div>
-                                            <hr>
-                                        <?php endforeach; ?>
+                                        <?php if (!empty($komentar)) {
+                                            foreach ($komentar as $komen) : ?>
+                                                <div>
+                                                    <?php
+                                                    if ($komen->anonim) {
+                                                        echo substr($komen->nama, 0, 1) . str_repeat('*', 5);
+                                                    } else {
+                                                        echo $komen->nama;
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <div><?= $komen->komentar ?></div>
+                                                <hr>
+                                        <?php endforeach;
+                                        } else { ?>
+                                        Komentar masih kosong
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +153,7 @@
                 pieChart.destroy();
             }
             var ctx = document.getElementById('pieChart').getContext('2d');
-            
+
             // Cek apakah data kosong
             if (data.length === 0) {
                 // Menampilkan teks 'Maaf, data masih kosong'
@@ -160,7 +164,7 @@
                 ctx.fillText('Maaf, data masih kosong', ctx.canvas.width / 2, ctx.canvas.height / 2);
                 return;
             }
-            
+
             pieChart = new Chart(ctx, {
                 type: 'pie',
                 data: {

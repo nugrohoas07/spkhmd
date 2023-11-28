@@ -8,6 +8,11 @@ class Model_pemira extends CI_Model
         $this->load->model(array('model_user'));
     }
 
+    function getInfoPemira()
+    {
+        return $this->db->get_where('pemira', ["YEAR(waktu_input)" => date('Y')])->row();
+    }
+
     //mendapatkan calon tahun ini
     function getCalonThisYear()
     {
@@ -222,7 +227,11 @@ class Model_pemira extends CI_Model
     {
         $post = $this->input->post();
         $user_id = $this->session->userdata("username");
-        $kriteria_before = $post["kriteria_before"];
+        if (isset($post["kriteria_before"])) {
+            $kriteria_before = $post["kriteria_before"];
+        } else {
+            $kriteria_before = array();
+        }
         $id_kriteria = $post["id_kriteria"];
         $bobot = $post["bobot"];
         // Identifikasi data yang perlu dihapus

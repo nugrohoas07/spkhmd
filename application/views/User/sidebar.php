@@ -44,13 +44,13 @@ $img = 'https://api.um.ac.id/akademik/operasional/GetFoto.ptikUM?nim=' . $nim . 
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="<?php echo site_url('User/kriteria_bobot') ?>" class="nav-link">
-                <i class="far fa-calendar-alt nav-icon"></i>
-                <p>Hitung</p>
+                <i class="fas fa-calculator nav-icon"></i>
+                <p>Proses</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="<?= site_url('User/rekomendasi_calon') ?>" class="nav-link">
-                <i class="far fa-calendar-alt nav-icon"></i>
+                <i class="fas fa-poll nav-icon"></i>
                 <p>Hasil Rekomendasi</p>
               </a>
             </li>
@@ -58,7 +58,7 @@ $img = 'https://api.um.ac.id/akademik/operasional/GetFoto.ptikUM?nim=' . $nim . 
         </li>
         <!-- /SPK SPK SPK SPK SPK -->
         <li class="nav-item " title="Download Buku Panduan">
-          <a href="#" class="nav-link ">
+          <a href="<?= base_url('./panduan/panduan_user.pdf') ?>" target="_blank" class="nav-link ">
             <i class="nav-icon fas fa-book"></i>
             <p>
               Buku Panduan

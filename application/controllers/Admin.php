@@ -14,7 +14,7 @@ class Admin extends CI_Controller
 
   function index()
   {
-    $data["pemira"] = $this->db->get_where('pemira', ["YEAR(waktu_input)" => date('Y')])->row();
+    $data["pemira"] = $this->model_pemira->getInfoPemira();
     $this->load->view('Admin/index', $data);
   }
 

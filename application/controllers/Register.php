@@ -21,7 +21,7 @@ class Register extends CI_Controller
         if (isset($_POST['daftar'])) {
             if($this->model_user->checkUsernameExist())
             {
-                $this->toastr->error('Gagal Daftar, Username sudah ada');
+                $this->toastr->error('Gagal Daftar, NIM sudah terdaftar');
                 redirect('register');
             }
             if ($this->model_user->registerUser()) {

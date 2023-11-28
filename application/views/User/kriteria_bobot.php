@@ -34,14 +34,17 @@
                                 <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
                                     <div class="row">
                                         <div class="col-12">
-                                            <div class="form-group">
-                                                <i class="fa fa-info-circle"> Pilih kriteria calon ketua pilihan anda, minimal 3</i>
-                                                <hr/>
-                                                <select class="duallistbox" multiple="multiple" id="selected-options">
+                                            <div class="form-group clearfix">
+                                                <i class="fa fa-info-circle"> Pilih kriteria ketua pilihan anda, minimal 3</i>
+                                                <hr />
+                                                <div class="row">
                                                     <?php foreach ($kriteria as $krit) : ?>
-                                                        <option value="<?= $krit->id ?>"><?= $krit->kriteria ?></option>
+                                                        <div class="col-12 col-sm-4 col-md-3 icheck-primary">
+                                                            <input class="checkbox-kriteria" type="checkbox" id="checkbox-<?= $krit->id ?>" value="<?= $krit->id ?>">
+                                                            <label for="checkbox-<?= $krit->id ?>"><?= $krit->kriteria ?></label>
+                                                        </div>
                                                     <?php endforeach; ?>
-                                                </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -52,15 +55,17 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                                    <i class="fa fa-info-circle"> Masukkan bobot tiap kriteria, Total 100%</i>
-                                    <hr/>
+                                    <i class="fa fa-info-circle"> Masukkan bobot tiap kriteria, Pastikan total bobot 100%</i>
+                                    <hr />
                                     <form role="form" action="<?= site_url('user/input_bobot') ?>" class="form-submit" method="post">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div id="dynamic-form"></div>
-                                                <?php foreach ($myKriteria as $kriteria_bf) :  ?>
-                                                    <input type="hidden" name="kriteria_before[]" value="<?= $kriteria_bf->id_kriteria ?>">
-                                                <?php endforeach; ?>
+                                                <?php if (!empty($myKriteria)) {
+                                                    foreach ($myKriteria as $kriteria_bf) :  ?>
+                                                        <input type="hidden" name="kriteria_before[]" value="<?= $kriteria_bf->id_kriteria ?>">
+                                                <?php endforeach;
+                                                } ?>
                                                 <input type="hidden" name="simpan">
                                             </div>
                                         </div>
@@ -91,13 +96,6 @@
             kriteria[<?= $data->id; ?>] = '<?= $data->kriteria; ?>';
         <?php } ?>
 
-        $('.duallistbox').bootstrapDualListbox({
-            infoText: false,
-            nonSelectedListLabel: 'Daftar Kriteria',
-            selectedListLabel: 'Kriteria Dipilih',
-            showFilterInputs: false
-        })
-
         $('.range_5').ionRangeSlider({
             min: 0,
             max: 5,
@@ -109,54 +107,12 @@
             skin: 'round'
         })
 
-        /* $('.duallistbox').change(function() {
-            var selectedValues = $('.duallistbox').val()
-
-            $('#dynamic-form').empty();
-
-            selectedValues.forEach(function(value, index) {
-
-                $.ajax({
-                    url: '<?= base_url("user/get_bobot_usr/") ?>' + value,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(data) {
-                        var labelText = kriteria[value] + " (%)";
-                        var placeholderText = 'Bobot ' + kriteria[value];
-
-                        var formGroup = $('<div>').addClass('form-group');
-
-                        var labelElement = $('<label>').text(labelText);
-
-                        var inputHidden = $('<input>').attr('type', 'hidden').attr('name', 'id_kriteria[]').val(value)
-
-                        var inputElement = $('<input>')
-                            .attr('type', 'text')
-                            .addClass('form-control')
-                            .attr('name', 'bobot[]')
-                            .attr('placeholder', placeholderText)
-                            .attr('data-validation', 'required number totalSum100')
-                            .attr('data-validation-allowing', 'range[1;100]');
-
-                        inputElement.val(data.bobot_value);
-
-                        formGroup.append(labelElement);
-                        formGroup.append(inputHidden);
-                        formGroup.append(inputElement);
-
-                        $('#dynamic-form').append(formGroup);
-                    },
-                    error: function() {
-                        console.log('Fetching data error')
-                    }
-                })
-            })
-        }); */
-
         var selectedValues = [];
 
-        $('.duallistbox').change(function() {
-            var newValues = $('.duallistbox').val();
+        $('.checkbox-kriteria').change(function() {
+            var newValues = $('.checkbox-kriteria:checked').map(function() {
+                return this.value;
+            }).get();
 
             // Compare the new values with the previous ones
             var addedValues = newValues.filter(value => !selectedValues.includes(value));
@@ -179,7 +135,7 @@
 
                         var labelElement = $('<label>').text(labelText);
 
-                        var inputHidden = $('<input>').attr('type', 'hidden').attr('name', 'id_kriteria[]').val(value)
+                        var inputHidden = $('<input>').attr('type', 'hidden').attr('name', 'id_kriteria[]').val(value);
 
                         var inputElement = $('<input>')
                             .attr('type', 'number')
@@ -200,7 +156,7 @@
                         $('#dynamic-form').append(formGroup);
                     },
                     error: function() {
-                        console.log('Fetching data error')
+                        console.log('Fetching data error');
                     }
                 });
             });
@@ -214,8 +170,10 @@
             });
         });
 
-        $('#selected-options').on('change', function() {
-            var selectedOptions = $(this).val();
+        $('.checkbox-kriteria').on('change', function() {
+            var selectedOptions = $('.checkbox-kriteria:checked').map(function() {
+                return this.value;
+            }).get();
             var nextButton = document.getElementById('next-button');
 
             // Mengaktifkan atau menonaktifkan tombol berdasarkan apakah ada opsi yang dipilih

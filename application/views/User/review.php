@@ -33,8 +33,8 @@ $anonim = !empty($komentar->anonim) ? $komentar->anonim : "";
                             <div class="card-body">
                                 <h5>Calon : <?= $calon->nama ?></h5>
                                 <div class="callout callout-info">
-                                    <p>Nilai calon berdasarkan aspek yang kamu ketahui</p>
-                                    <p>1 = Sangat Buruk, 2 = Buruk, 3= Cukup Baik, 4 = Baik , 5 = Sangat Baik</p>
+                                    <p>Beri nilai pada aspek-aspek berikut sesuai dengan pengetahuan atau pengamatan Anda terhadap calon. Jika tidak tahu, silakan lewati.</p>
+                                    <p>1 = Sangat Buruk, 2 = Buruk, 3 = Cukup Baik, 4 = Baik , 5 = Sangat Baik</p>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">

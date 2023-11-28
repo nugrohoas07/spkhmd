@@ -43,7 +43,7 @@ $img = 'https://api.um.ac.id/akademik/operasional/GetFoto.ptikUM?nim=' . $nim . 
           </a>
         </li>
         <li class="nav-item " title="Download Buku Panduan">
-          <a href="#" class="nav-link ">
+          <a href="<?= base_url('./panduan/panduan_admin.pdf') ?>" target="_blank" class="nav-link ">
             <i class="nav-icon fas fa-book"></i>
             <p>Buku Panduan</p>
           </a>

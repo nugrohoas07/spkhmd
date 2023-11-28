@@ -14,12 +14,17 @@ class User extends CI_Controller
 
     function index()
     {
-        $data["pemira"] = $this->db->get_where('pemira', ["YEAR(waktu_input)" => date('Y')])->row();
+        $data["pemira"] = $this->model_pemira->getInfoPemira();
         $this->load->view('User/index', $data);
     }
 
     public function profil_calon()
     {
+        $pemira = $this->model_pemira->getInfoPemira();
+        if(empty($pemira) || $pemira->status !== '1') {
+            $this->toastr->error('Fitur masih ditutup');
+            redirect('User');
+        }
         $data["calon"] = $this->model_pemira->getCalonThisYear();
         $this->load->view('User/profil_calon', $data);
     }
@@ -56,6 +61,11 @@ class User extends CI_Controller
 
     public function kriteria_bobot()
     {
+        $pemira = $this->model_pemira->getInfoPemira();
+        if(empty($pemira) || $pemira->status !== '1') {
+            $this->toastr->error('Fitur masih ditutup');
+            redirect('User');
+        }
         $data["kriteria"] = $this->model_pemira->getKriteria();
         $data["myKriteria"] = $this->model_pemira->getMyKriteria();
         $this->load->view('User/kriteria_bobot', $data);
@@ -129,6 +139,11 @@ class User extends CI_Controller
 
     function rekomendasi_calon()
     {
+        $pemira = $this->model_pemira->getInfoPemira();
+        if(empty($pemira) || $pemira->status !== '1') {
+            $this->toastr->error('Fitur masih ditutup');
+            redirect('User');
+        }
         $data["calon"] = $this->model_pemira->getRekomendasiCalon();
         $this->load->view('User/ranking_calon', $data);
     }

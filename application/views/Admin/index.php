@@ -29,7 +29,7 @@
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col border-right border-left">
+              <div class="col-12 col-md border-right border-left">
                 <div class="description-block">
                   <h5 class="description-header">Kampanye Tulis</h5>
                   <p class="description-body">
@@ -37,7 +37,7 @@
                   </p>
                 </div>
               </div>
-              <div class="col border-right border-left">
+              <div class="col-12 col-md border-right border-left">
                 <div class="description-block">
                   <h5 class="description-header">Kampanye Lisan</h5>
                   <p class="description-body">
@@ -45,10 +45,9 @@
                     <br><?= date('H:i', strtotime($lisan[1])) ?> WIB
                     <br><?= $lok_lisan ?>
                   </p>
-                  </p>
                 </div>
               </div>
-              <div class="col border-right border-left">
+              <div class="col-12 col-md border-right border-left">
                 <div class="description-block">
                   <h5 class="description-header">Debat Calon</h5>
                   <p class="description-body">
@@ -58,7 +57,7 @@
                   </p>
                 </div>
               </div>
-              <div class="col border-right border-left">
+              <div class="col-12 col-md border-right border-left">
                 <div class="description-block ">
                   <h5 class="description-header">Pemilu Raya</h5>
                   <p class="description-body">
@@ -68,7 +67,7 @@
                   </p>
                 </div>
               </div>
-              <div class="col border-right border-left">
+              <div class="col-12 col-md border-right border-left">
                 <div class="description-block ">
                   <h5 class="description-header">Pengumuman</h5>
                   <p class="description-body">
@@ -79,10 +78,10 @@
             </div>
             <?php if ($pemira->keterangan) { ?>
               <div class="row">
-                <div class="card-title"><b>Informasi Tambahan :</b></div>
+                <div class="col-12 card-title"><b>Informasi Tambahan :</b></div>
               </div>
               <div class="row">
-                <div class="text-left">
+                <div class="col-12 text-left">
                   <?= $pemira->keterangan ?>
                 </div>
               </div>

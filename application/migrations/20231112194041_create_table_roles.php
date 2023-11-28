@@ -30,10 +30,10 @@ class Migration_create_table_roles extends CI_Migration {
 
 		// Add admin default
 		$data1 = array(
-			'role' => 'admin'
+			'role' => 'Admin'
 		);
 		$data2 = array(
-			'role' => 'user'
+			'role' => 'User'
 		);
 		$this->db->insert($this->_table_name, $data1);
 		$this->db->insert($this->_table_name, $data2);

@@ -1,3 +1,15 @@
+<?php section('head'); ?>
+<style>
+  tr td {
+    vertical-align: middle !important;
+    /* Posisi tengah vertikal */
+    font-size: 18px;
+    /* Ukuran huruf */
+    font-weight: bold;
+    /* Teks menjadi tebal */
+  }
+</style>
+<?php endsection(); ?>
 <?php section('contents'); ?>
 <div class="content-wrapper">
   <section class="content-header">
@@ -30,31 +42,34 @@
             <div class="card-body">
               <div class="tab-content" id="custom-tabs-one-tabContent">
                 <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
-                  <?php if(!empty($calon)) { ?>
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th style="width: 10px">Rank</th>
-                        <th>Foto</th>
-                        <th>Nama</th>
-                        <th>Skor</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php $no = 1;
-                      foreach ($calon as $row) : ?>
+                  <?php if (!empty($calon)) { ?>
+                    <div class="mb-4 col-12 text-center">
+                      <h4>Rekomendasi Calon Pilihanmu Adalah <div class="text-primary"><?= $calon[0]->nama ?></div></h4>
+                    </div>
+                    <table class="table table-striped">
+                      <thead>
                         <tr>
-                          <td><?= $no ?></td>
-                          <td><?= $row->foto ?></td>
-                          <td><?= $row->nama ?></td>
-                          <td><b><?= round($row->skor,3) ?></b></td>
+                          <th style="width: 10px">Rank</th>
+                          <th></th>
+                          <th>Nama</th>
+                          <th>Skor</th>
                         </tr>
-                      <?php $no++;
-                      endforeach; ?>
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <?php $no = 1;
+                        foreach ($calon as $row) : ?>
+                          <tr>
+                            <td style="width: 5%" class="align-middle text-center"><?= $no ?></td>
+                            <td style="width: 15%"><img class="profile-user-img img-fluid" src="<?= base_url('upload/') ?>foto/<?= $row->foto ?>" onerror="this.src='<?= base_url('assets/') ?>dist/img/default.png'" alt="Foto Calon"></td>
+                            <td class="align-middle"><?= $row->nama ?></td>
+                            <td class="align-middle"><b><?= round($row->skor, 3) ?></b></td>
+                          </tr>
+                        <?php $no++;
+                        endforeach; ?>
+                      </tbody>
+                    </table>
                   <?php } else { ?>
-                    Belum ada rekomendasi, silahkan <a href="<?= site_url('User/kriteria_bobot') ?>">Isi</a>
+                    Belum ada rekomendasi, silahkan proses rekomendasi <a href="<?= site_url('User/kriteria_bobot') ?>">disini</a>
                   <?php } ?>
                 </div>
               </div>

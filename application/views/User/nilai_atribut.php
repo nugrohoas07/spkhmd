@@ -29,10 +29,14 @@
                         <div class="card-body">
                             <div class="tab-content" id="custom-tabs-one-tabContent">
                                 <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+                                    <div class="callout callout-info">
+                                        <p>Beri nilai pada setiap kriteria berikut sesuai dengan pengetahuan atau pengamatan Anda terhadap calon.</p>
+                                        <p>1 = Sangat Buruk, 2 = Buruk, 3 = Cukup Baik, 4 = Baik , 5 = Sangat Baik</p>
+                                    </div>
                                     <form role="form" action="<?= site_url('user/input_nilai') ?>" class="form-submit" method="post">
                                         <?php foreach ($calon as $calon_this_year) : ?>
                                             <div class="mb-4">
-                                                <h5><u>Calon : <?= $calon_this_year->nama ?></u></h5>
+                                                <h5>Calon : <?= $calon_this_year->nama ?></h5>
                                             </div>
                                             <div class="row">
                                                 <?php foreach ($myKriteria as $kriteria_usr) : ?>

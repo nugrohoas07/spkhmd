@@ -24,7 +24,7 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <b>SPK</b> HMD
+      <b>SPK</b> HMJ
     </div>
     <!-- /.login-logo -->
     <div class="card">
