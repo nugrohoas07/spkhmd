@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                                    <i class="fa fa-info-circle"> Masukkan bobot tiap kriteria, Pastikan total bobot 100%</i>
+                                    <i class="fa fa-info-circle"> Masukkan bobot tiap kriteria, Pastikan total keseluruhan bobot = 100%</i>
                                     <hr />
                                     <form role="form" action="<?= site_url('user/input_bobot') ?>" class="form-submit" method="post">
                                         <div class="row">

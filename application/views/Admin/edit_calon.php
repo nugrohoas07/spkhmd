@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>NIM</label>
-                                    <input type="text" class="form-control" id="nim" name="nim" value="<?= $calon->nim ?>" placeholder="NIM Calon" data-validation="required">
+                                    <input disabled type="text" class="form-control" id="nim" name="nim" value="<?= $calon->nim ?>" placeholder="NIM Calon" data-validation="required">
                                 </div>
                                 <div class="form-group">
                                     <label>Prodi</label>
