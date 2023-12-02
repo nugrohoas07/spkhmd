@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>NIM</label>
-                                    <input disabled type="text" class="form-control" id="nim" name="nim" value="<?= $calon->nim ?>" placeholder="NIM Calon" data-validation="required">
+                                    <input readonly type="text" class="form-control" id="nim" name="nim" value="<?= $calon->nim ?>" placeholder="NIM Calon" data-validation="required">
                                 </div>
                                 <div class="form-group">
                                     <label>Prodi</label>
@@ -63,6 +63,26 @@
                                 <div class="form-group">
                                     <label>Pengalaman Organisasi</label>
                                     <textarea class="textareacustom" name="po" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?= $calon->pengalaman_org ?></textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="facebook">Facebook (Opsional)</label>
+                                            <input type="text" class="form-control" name="facebook" placeholder="https://www.facebook.com/username/" value="<?= $calon->facebook ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="twitter">Twitter (Opsional)</label>
+                                            <input type="text" class="form-control" name="twitter" placeholder="https://twitter.com/username" value="<?= $calon->twitter ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="instagram">Instagram (Opsional)</label>
+                                            <input type="text" class="form-control" name="instagram" placeholder="https://www.instagram.com/username/" value="<?= $calon->instagram ?>">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-footer">

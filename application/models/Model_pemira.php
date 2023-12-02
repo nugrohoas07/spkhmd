@@ -39,11 +39,14 @@ class Model_pemira extends CI_Model
         $this->visi_misi = $post["vm"];
         $this->pengalaman_org = $post["po"];
         $this->foto = $this->_uploadFotoCalon();
+        $this->facebook = empty($post["facebook"]) ? null : $post["facebook"];
+        $this->twitter = empty($post["twitter"]) ? null : $post["twitter"];
+        $this->instagram = empty($post["instagram"]) ? null : $post["instagram"];
         return $this->db->insert('calon_ketua', $this);
     }
 
     //mengedit data calon ketua
-    public function editCalon()
+    function editCalon()
     {
         $post = $this->input->post();
         $this->nama = $post["nama"];
@@ -59,6 +62,9 @@ class Model_pemira extends CI_Model
         } else {
             $this->foto = $this->_uploadFotoCalon();
         }
+        $this->facebook = empty($post["facebook"]) ? null : $post["facebook"];
+        $this->twitter = empty($post["twitter"]) ? null : $post["twitter"];
+        $this->instagram = empty($post["instagram"]) ? null : $post["instagram"];
         return $this->db->update('calon_ketua', $this, array('nim' => $post['nim']));
     }
 

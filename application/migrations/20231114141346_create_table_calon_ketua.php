@@ -55,6 +55,21 @@ class Migration_create_table_calon_ketua extends CI_Migration
 				'type' => 'VARCHAR',
 				'constraint' => '255',
 			),
+			'facebook' => array(
+				'type' => 'VARCHAR',
+				'constraint' => '255',
+				'default' => NULL,
+			),
+			'twitter' => array(
+				'type' => 'VARCHAR',
+				'constraint' => '255',
+				'default' => NULL,
+			),
+			'instagram' => array(
+				'type' => 'VARCHAR',
+				'constraint' => '255',
+				'default' => NULL,
+			),
 			'waktu_input TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
 		));
 		$this->dbforge->add_key('id', TRUE);

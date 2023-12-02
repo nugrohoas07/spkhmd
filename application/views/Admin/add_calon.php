@@ -63,6 +63,26 @@
                                     <label>Pengalaman Organisasi</label>
                                     <textarea class="textareacustom" name="po" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                 </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="facebook">Facebook (Opsional)</label>
+                                            <input type="url" class="form-control" name="facebook" placeholder="https://www.facebook.com/username/">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="twitter">Twitter (Opsional)</label>
+                                            <input type="url" class="form-control" name="twitter" placeholder="https://twitter.com/username">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <label for="instagram">Instagram (Opsional)</label>
+                                            <input type="url" class="form-control" name="instagram" placeholder="https://www.instagram.com/username/">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <input type="hidden" name="simpan">

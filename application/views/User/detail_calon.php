@@ -31,6 +31,28 @@
                                 <li class="list-group-item">
                                     <b>Angkatan</b><a class="float-right"><?= $calon->angkatan ?></a>
                                 </li>
+                                <?php if (!empty($calon->facebook) || !empty($calon->twitter) || !empty($calon->instagram)) { ?>
+                                <li class="list-group-item">
+                                    <b>Social Media</b>
+                                    <div class="float-right">
+                                        <?php if (!empty($calon->facebook)) { ?>
+                                        <a href="<?= $calon->facebook ?>" target="_blank" style="color: #3b5998;">
+                                            <i class="fab fa-facebook-square" style="font-size: 24px;"></i>
+                                        </a>
+                                        <?php }
+                                        if (!empty($calon->twitter)) { ?>
+                                        <a href="<?= $calon->twitter ?>" target="_blank" style="color: #55acee;">
+                                            <i class="fab fa-twitter-square" style="font-size: 24px;"></i>
+                                        </a>
+                                        <?php }
+                                        if (!empty($calon->instagram)) { ?>
+                                        <a href="<?= $calon->instagram ?>" target="_blank" style="color: #ac2bac;">
+                                            <i class="fab fa-instagram" style="font-size: 24px;"></i>
+                                        </a>
+                                        <?php } ?>
+                                    </div>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
@@ -99,9 +121,9 @@
                                                 </div>
                                                 <div><?= $komen->komentar ?></div>
                                                 <hr>
-                                        <?php endforeach;
+                                            <?php endforeach;
                                         } else { ?>
-                                        Komentar masih kosong
+                                            Komentar masih kosong
                                         <?php } ?>
                                     </div>
                                 </div>
