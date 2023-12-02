@@ -37,6 +37,7 @@ class Migration_create_table_komentar extends CI_Migration
 				'constraint' => 1,
 				'default' => 0, // Default to non-anonymous
 			),
+			'waktu_input TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
 		));
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->create_table($this->_table_name, TRUE);

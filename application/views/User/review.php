@@ -59,7 +59,7 @@ $anonim = !empty($komentar->anonim) ? $komentar->anonim : "";
                                 <div class="form-group">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="anonim" <?php echo ($anonim != 0) ? 'checked' : ''; ?>>
-                                        <label class="form-check-label">Kirim sebagai anonim</label>
+                                        <label class="form-check-label">Kirim komentar sebagai anonim</label>
                                     </div>
                                 </div>
                             </div>

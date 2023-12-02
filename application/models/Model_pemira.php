@@ -419,4 +419,21 @@ class Model_pemira extends CI_Model
         $this->db->order_by('sc.skor', 'DESC');
         return $this->db->get()->result();
     }
+
+    function getKomentarFromCalonThisYear()
+    {
+        $this->db->select('k.id, k.komentar, k.anonim, c.nama AS nama_calon, u.nama AS nama_user');
+        $this->db->from('komentar k');
+        $this->db->join('calon_ketua c', 'k.id_calon = c.nim');
+        $this->db->join('users u', 'k.id_user = u.username');
+        $this->db->where('YEAR(c.waktu_input)', date('Y'));
+        $this->db->order_by('c.nama', 'ASC');
+        return $this->db->get()->result();
+    }
+
+    function deleteCommentById()
+    {
+        $post = $this->input->post();
+        return $this->db->delete('komentar', array("id" => $post['id_komentar']));
+    }
 }

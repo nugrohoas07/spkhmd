@@ -183,8 +183,8 @@
                 nextButton.setAttribute('disabled', 'disabled');
             }
         });
-
-        $.formUtils.addValidator({ //custom validator untuk total bobot == 100%
+        
+        $.formUtils.addValidator({
             name: 'totalSum100',
             validatorFunction: function(value, $el, config, language, $form) {
                 var $fields = $form.find('[data-validation*="totalSum100"]');
@@ -197,9 +197,10 @@
 
                 return sum === 100;
             },
-            errorMessage: 'Total bobot harus 100%',
+            errorMessage: 'Total bobot harus 100%', // Default message, dapat diubah dalam validasi
             errorMessageKey: 'badTotalSum100'
-        })
+        });
+
     });
 
     function changeTab(tabId) {

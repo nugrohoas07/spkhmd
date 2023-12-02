@@ -42,6 +42,12 @@ $img = 'https://api.um.ac.id/akademik/operasional/GetFoto.ptikUM?nim=' . $nim . 
             <p>Profil Calon</p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="<?php echo site_url('Admin/daftar_komentar') ?>" class="nav-link">
+            <i class="fas fa-comment-alt nav-icon"></i>
+            <p>Daftar Komentar</p>
+          </a>
+        </li>
         <li class="nav-item " title="Download Buku Panduan">
           <a href="<?= base_url('./panduan/panduan_admin.pdf') ?>" target="_blank" class="nav-link ">
             <i class="nav-icon fas fa-book"></i>

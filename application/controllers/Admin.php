@@ -77,4 +77,22 @@ class Admin extends CI_Controller
       redirect('admin/profil_calon');
     }
   }
+
+  function daftar_komentar()
+  {
+    $data["komentar"] = $this->model_pemira->getKomentarFromCalonThisYear();
+    $this->load->view('Admin/list_komentar', $data);
+  }
+
+  function crud_komentar()
+  {
+    if (isset($_POST['hapus'])) {
+      if ($this->model_pemira->deleteCommentById()) {
+        $this->toastr->success('Berhasil Menghapus');
+      } else {
+        $this->toastr->error('Gagal Menghapus');
+      }
+      redirect('admin/daftar_komentar');
+    }
+  }
 }
