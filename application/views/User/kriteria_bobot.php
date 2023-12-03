@@ -35,7 +35,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group clearfix">
-                                                <i class="fa fa-info-circle"> Pilih kriteria ketua pilihan anda, minimal 3</i>
+                                                <i class="fa fa-info-circle"></i> Pilih kriteria ketua pilihan anda, minimal 3
                                                 <hr />
                                                 <div class="row">
                                                     <?php foreach ($kriteria as $krit) : ?>
@@ -55,7 +55,8 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                                    <i class="fa fa-info-circle"> Masukkan bobot tiap kriteria, Pastikan total keseluruhan bobot = 100%</i>
+                                    <i class="fa fa-info-circle"></i> Bobot merupakan besar dampak kriteria tersebut dalam mempengaruhi keputusan anda.
+                                    <p>Masukkan bobot tiap kriteria, <b>pastikan</b> total keseluruhan bobot = 100%</p>
                                     <hr />
                                     <form role="form" action="<?= site_url('user/input_bobot') ?>" class="form-submit" method="post">
                                         <div class="row">
@@ -183,7 +184,7 @@
                 nextButton.setAttribute('disabled', 'disabled');
             }
         });
-        
+
         $.formUtils.addValidator({
             name: 'totalSum100',
             validatorFunction: function(value, $el, config, language, $form) {
@@ -195,9 +196,11 @@
                     sum += fieldValue;
                 });
 
+                this.errorMessage = 'Total bobot harus 100%, total bobot sekarang ' + sum + '%';
+
                 return sum === 100;
             },
-            errorMessage: 'Total bobot harus 100%', // Default message, dapat diubah dalam validasi
+            errorMessage: 'Total bobot harus 100%, total bobot sekarang 0%',
             errorMessageKey: 'badTotalSum100'
         });
 
