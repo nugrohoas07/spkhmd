@@ -35,16 +35,23 @@
                                     </div>
                                     <form role="form" action="<?= site_url('user/input_nilai') ?>" class="form-submit" method="post">
                                         <?php foreach ($calon as $calon_this_year) : ?>
-                                            <div class="mb-4">
-                                                <h5>Calon : <?= $calon_this_year->nama ?></h5>
-                                            </div>
-                                            <div class="row">
-                                                <?php foreach ($myKriteria as $kriteria_usr) : ?>
-                                                    <div class="col-md-6">
-                                                        <label for="nilai[<?= $calon_this_year->nim ?>][<?= $kriteria_usr->id_kriteria ?>]"><?= $kriteria_usr->kriteria ?></label>
-                                                        <input class="range_5" type="text" class="form-control" name="nilai[<?= $calon_this_year->nim ?>][<?= $kriteria_usr->id_kriteria ?>]">
+                                            <div class="card card-primary">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Calon : <?= $calon_this_year->nama ?></h3>
+                                                    <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                                     </div>
-                                                <?php endforeach; ?>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <?php foreach ($myKriteria as $kriteria_usr) : ?>
+                                                            <div class="col-md-6">
+                                                                <label for="nilai[<?= $calon_this_year->nim ?>][<?= $kriteria_usr->id_kriteria ?>]"><?= $kriteria_usr->kriteria ?></label>
+                                                                <input class="range_5 form-control" type="text" name="nilai[<?= $calon_this_year->nim ?>][<?= $kriteria_usr->id_kriteria ?>]">
+                                                            </div>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <?php if ($calon_this_year !== end($calon)) : ?>
                                                 <hr class="mt-4 mb-4"> <!-- garis pemisah -->

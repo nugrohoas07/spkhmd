@@ -59,7 +59,7 @@ if (!empty($pemira)) {
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Kampanye Tulis</label>
+                                    <label>Kampanye Tulis<span class="text-danger">*</span></label>
                                     <input autocomplete="off" type="text" class="form-control" id="ktulis" name="ktulis" value="<?= $tulis ?>" placeholder="Tanggal Kampanye Tulis" data-validation="required">
                                     <input type="hidden" name="ktulis_start" id="ktulis0" value="">
                                     <input type="hidden" name="ktulis_end" id="ktulis1" value="">
@@ -67,7 +67,7 @@ if (!empty($pemira)) {
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Kampanye Lisan</label>
+                                            <label>Kampanye Lisan<span class="text-danger">*</span></label>
                                             <div class="input-group date" id="klisan" data-target-input="nearest">
                                                 <input type="text" name="klisan" value="<?= $lisan ?>" class="form-control datetimepicker-input" data-target="#klisan" />
                                                 <div class="input-group-append" data-target="#klisan" data-toggle="datetimepicker">
@@ -78,7 +78,7 @@ if (!empty($pemira)) {
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Lokasi Kampanye Lisan</label>
+                                            <label>Lokasi Kampanye Lisan<span class="text-danger">*</span></label>
                                             <input autocomplete="off" type="text" name="lokasi_lisan" value="<?= $l_lisan ?>" class="form-control" placeholder="Lokasi/link streaming kampanye lisan" data-validation="required" />
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@ if (!empty($pemira)) {
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Debat Calon</label>
+                                            <label>Debat Calon<span class="text-danger">*</span></label>
                                             <div class="input-group date" id="debat" data-target-input="nearest">
                                                 <input type="text" name="debat" value="<?= $debat ?>" class="form-control datetimepicker-input" data-target="#debat" />
                                                 <div class="input-group-append" data-target="#debat" data-toggle="datetimepicker">
@@ -97,7 +97,7 @@ if (!empty($pemira)) {
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Lokasi Debat Calon</label>
+                                            <label>Lokasi Debat Calon<span class="text-danger">*</span></label>
                                             <input autocomplete="off" type="text" value="<?= $l_debat ?>" name="lokasi_debat" class="form-control" placeholder="Lokasi/link streaming debat calon" data-validation="required" />
                                         </div>
                                     </div>
@@ -105,7 +105,7 @@ if (!empty($pemira)) {
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Pemungutan Suara</label>
+                                            <label>Pemungutan Suara<span class="text-danger">*</span></label>
                                             <div class="input-group date" id="pemilihan" data-target-input="nearest">
                                                 <input type="text" name="pemilihan" value="<?= $suara ?>" class="form-control datetimepicker-input" data-target="#pemilihan" />
                                                 <div class="input-group-append" data-target="#pemilihan" data-toggle="datetimepicker">
@@ -116,7 +116,7 @@ if (!empty($pemira)) {
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Waktu Akhir Pemungutan Suara</label>
+                                            <label>Waktu Akhir Pemungutan Suara<span class="text-danger">*</span></label>
                                             <div class="input-group date" id="pemilihan_end" data-target-input="nearest">
                                                 <input type="text" name="pemilihan_end" value="<?= $suara_end ?>" class="form-control datetimepicker-input" data-target="#pemilihan_end" />
                                                 <div class="input-group-append" data-target="#pemilihan_end" data-toggle="datetimepicker">
@@ -127,11 +127,11 @@ if (!empty($pemira)) {
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Lokasi Pemungutan Suara</label>
+                                    <label>Lokasi Pemungutan Suara<span class="text-danger">*</span></label>
                                     <input autocomplete="off" type="text" value="<?= $l_suara ?>" name="lokasi_pemilihan" class="form-control" placeholder="Lokasi pemungutan suara/link e-voting" data-validation="required" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Pengumuman Hasil Suara</label>
+                                    <label>Pengumuman Hasil Suara<span class="text-danger">*</span></label>
                                     <div class="input-group date" id="pengumuman" data-target-input="nearest">
                                         <input type="text" name="pengumuman" value="<?= $pengumuman ?>" class="form-control datetimepicker-input" data-target="#pengumuman" />
                                         <div class="input-group-append" data-target="#pengumuman" data-toggle="datetimepicker">
@@ -140,7 +140,7 @@ if (!empty($pemira)) {
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Informasi Tambahan <small>(Opsional)</small></label>
+                                    <label>Informasi Tambahan</label>
                                     <textarea class="textareacustom" name="info" placeholder="Informasi Tambahan (Jika Perlu)" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?= $info ?></textarea>
                                 </div>
                             </div>

@@ -25,31 +25,31 @@
                         <form role="form" action="<?php echo site_url('admin/update_calon') ?>" class="form-submit" method="post" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label>Nama Calon</label>
+                                    <label>Nama Calon<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="nama" name="nama" value="<?= $calon->nama ?>" placeholder="Nama Calon" data-validation="required">
                                 </div>
                                 <div class="form-group">
-                                    <label>NIM</label>
+                                    <label>NIM<span class="text-danger">*</span></label>
                                     <input readonly type="text" class="form-control" id="nim" name="nim" value="<?= $calon->nim ?>" placeholder="NIM Calon" data-validation="required">
                                 </div>
                                 <div class="form-group">
-                                    <label>Prodi</label>
+                                    <label>Prodi<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="prodi" name="prodi" value="<?= $calon->prodi ?>" placeholder="Prodi Calon" data-validation="required">
                                 </div>
                                 <div class="form-group">
-                                    <label>Angkatan</label>
+                                    <label>Angkatan<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="angkatan" name="angkatan" value="<?= $calon->angkatan ?>" placeholder="Tahun Masuk Calon" data-validation="required">
                                 </div>
                                 <div class="form-group">
-                                    <label>Semester</label>
+                                    <label>Semester<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="semester" name="semester" value="<?= $calon->semester ?>" placeholder="Semester Calon Saat Ini" data-validation="required">
                                 </div>
                                 <div class="form-group">
-                                    <label>IPK</label>
+                                    <label>IPK<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="ipk" name="ipk" value="<?= $calon->ipk ?>" placeholder="IPK Calon Saat Ini" data-validation="required">
                                 </div>
                                 <div class="form-group ">
-                                    <label>Foto<small class="text-danger"> (format file png,jpg,jpeg 128x128 maks 2MB)</small></label>
+                                    <label>Foto<span class="text-danger">*</span><small class="text-danger"> (format file png,jpg,jpeg 128x128 maks 2MB)</small></label>
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="foto" name="foto" data-validation="size extension" data-validation-min-size="1kb" data-validation-min-size="2M" data-validation-allowing="png,jpg,jpeg">
                                         <input type="hidden" name="old_foto" value="<?= $calon->foto ?>">
@@ -57,29 +57,29 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Visi dan Misi</label>
+                                    <label>Visi dan Misi<span class="text-danger">*</span></label>
                                     <textarea class="textareacustom" name="vm" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?= $calon->visi_misi ?></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Pengalaman Organisasi</label>
+                                    <label>Pengalaman Organisasi<span class="text-danger">*</span></label>
                                     <textarea class="textareacustom" name="po" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?= $calon->pengalaman_org ?></textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="facebook">Facebook (Opsional)</label>
+                                            <label for="facebook">Facebook</label>
                                             <input type="text" class="form-control" name="facebook" placeholder="https://www.facebook.com/username/" value="<?= $calon->facebook ?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="twitter">Twitter (Opsional)</label>
+                                            <label for="twitter">Twitter</label>
                                             <input type="text" class="form-control" name="twitter" placeholder="https://twitter.com/username" value="<?= $calon->twitter ?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="form-group">
-                                            <label for="instagram">Instagram (Opsional)</label>
+                                            <label for="instagram">Instagram</label>
                                             <input type="text" class="form-control" name="instagram" placeholder="https://www.instagram.com/username/" value="<?= $calon->instagram ?>">
                                         </div>
                                     </div>

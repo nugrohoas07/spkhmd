@@ -27,11 +27,10 @@ $anonim = !empty($komentar->anonim) ? $komentar->anonim : "";
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Review Calon</h3>
+                            <h3 class="card-title">Review Calon : <?= $calon->nama ?></h3>
                         </div>
                         <form role="form" action="<?php echo site_url('user/input_ulasan') ?>" class="form-submit" method="post">
                             <div class="card-body">
-                                <h5>Calon : <?= $calon->nama ?></h5>
                                 <div class="callout callout-info">
                                     <p>Beri nilai pada aspek-aspek berikut sesuai dengan pengetahuan atau pengamatan Anda terhadap calon. Jika tidak tahu, silakan lewati.</p>
                                     <p>1 = Sangat Buruk, 2 = Buruk, 3 = Cukup Baik, 4 = Baik , 5 = Sangat Baik</p>

@@ -110,7 +110,7 @@
                                         <h5>Komentar</h5>
                                         <?php if (!empty($komentar)) {
                                             foreach ($komentar as $komen) : ?>
-                                                <div>
+                                                <div><b>
                                                     <?php
                                                     if ($komen->anonim) {
                                                         echo substr($komen->nama, 0, 1) . str_repeat('*', 5);
@@ -118,12 +118,12 @@
                                                         echo $komen->nama;
                                                     }
                                                     ?>
-                                                </div>
+                                                </b></div>
                                                 <div><?= $komen->komentar ?></div>
                                                 <hr>
                                             <?php endforeach;
                                         } else { ?>
-                                            Komentar masih kosong
+                                            Komentar masih kosong, <a href="<?= site_url('user/review_calon') ?>/<?= $calon->nim ?>">tulis komentar</a>
                                         <?php } ?>
                                     </div>
                                 </div>

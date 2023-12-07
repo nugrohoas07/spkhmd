@@ -37,8 +37,8 @@
                       <b>Angkatan</b><a class="float-right"><?= $row->angkatan ?></a>
                     </li>
                   </ul>
-                  <a href="detail_calon/<?= $row->nim ?>" class="btn btn-primary btn-block"><b>Lihat Profil</b></a>
-                  <a href="review_calon/<?= $row->nim ?>" class="btn btn-warning btn-block"><b>Review Calon</b></a>
+                  <a href="<?= site_url('user/detail_calon') ?>/<?= $row->nim ?>" class="btn btn-primary btn-block"><b>Lihat Profil</b></a>
+                  <a href="<?= site_url('user/review_calon') ?>/<?= $row->nim ?>" class="btn btn-warning btn-block"><b>Review Calon</b></a>
                 </div>
               </div>
             </div>

@@ -38,8 +38,8 @@ $img = 'https://api.um.ac.id/akademik/operasional/GetFoto.ptikUM?nim=' . $nim . 
         </li>
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-school"></i>
-            <p>Rekomendasi<i class="right fas fa-angle-left"></i></p>
+            <i class="nav-icon fas fa-balance-scale"></i>
+            <p>Penilaian<i class="right fas fa-angle-left"></i></p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
