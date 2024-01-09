@@ -106,7 +106,8 @@
             ['para', ['ul', 'ol', 'paragraph']],
             ['height', ['height']],
             ['view', ['undo', 'redo', 'fullscreen']],
-        ]
+        ],
+        fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '36', '48']
     });
 </script>
 <?php endsection(); ?>

@@ -27,8 +27,8 @@
         $lok_debat = preg_replace('/((http|ttps):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?)/', '<a href="\1">\1</a>', $pemira->lok_debat);
         $lok_pemilu = preg_replace('/((http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?)/', '<a href="\1">\1</a>', $pemira->lok_pemilihan);
       ?>
-        <div class="card card-primary text-center">
-          <div class="card-header">
+        <div class="card card-primary">
+          <div class="card-header text-center">
             Jadwal PEMIRA <?= date('Y') ?>
           </div>
           <div class="card-body">
